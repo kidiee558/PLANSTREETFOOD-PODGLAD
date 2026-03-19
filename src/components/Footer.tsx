@@ -1,5 +1,6 @@
 import { MapPin, Phone, Clock, Facebook, Instagram } from 'lucide-react';
 import { motion } from 'motion/react';
+import { Map, AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
 
 export default function Footer() {
   return (
@@ -20,8 +21,15 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="font-display text-2xl text-plan-orange">Adres</p>
-                  <p>Plac handlowy, Dominów</p>
-                  <p>Rynek 4</p>
+                  <a 
+                    href="https://www.google.com/maps/place/PLAN+Street+Food/@51.1706938,22.5946688,17z/data=!3m1!4b1!4m14!1m7!3m6!1s0x4722f90ad30c5d95:0x157ac9009370d571!2sPLAN+Street+Food!8m2!3d51.1706905!4d22.5972437!16s%2Fg%2F11yvcwp5jn!3m5!1s0x4722f90ad30c5d95:0x157ac9009370d571!8m2!3d51.1706905!4d22.5972437!16s%2Fg%2F11yvcwp5jn?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-plan-orange transition-colors"
+                  >
+                    <p>Plac handlowy, Dominów</p>
+                    <p>Rynek 4</p>
+                  </a>
                 </div>
               </div>
               
@@ -41,9 +49,9 @@ export default function Footer() {
                 </div>
                 <div>
                   <p className="font-display text-2xl text-plan-orange">Godziny otwarcia</p>
-                  <p>Pon - Czw: 12:00 - 21:00</p>
+                  <p>Pon - Czw: 12:00 - 22:00</p>
                   <p>Pt - Sob: 12:00 - 23:00</p>
-                  <p>Niedz: 12:00 - 21:00</p>
+                  <p>Niedz: 12:00 - 22:00</p>
                 </div>
               </div>
             </div>
@@ -58,25 +66,33 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Map Placeholder */}
-          <div className="flex flex-col items-center justify-center p-8 bg-plan-light cartoon-border">
-            <p className="text-plan-dark font-display text-2xl mb-4">Mapa dojazdu</p>
-            <a
+          {/* Map */}
+          <div className="flex flex-col">
+            <div className="cartoon-border overflow-hidden bg-plan-light p-2 transform rotate-1 mb-6 h-[400px]">
+              <Map
+                defaultCenter={{ lat: 51.1706938, lng: 22.5946687 }}
+                defaultZoom={15}
+                mapId="DEMO_MAP_ID"
+                internalUsageAttributionIds={['gmp_mcp_codeassist_v1_aistudio']}
+                style={{ width: '100%', height: '100%' }}
+              >
+                <AdvancedMarker position={{ lat: 51.1706938, lng: 22.5946687 }}>
+                  <Pin background="#4285F4" glyphColor="#fff" />
+                </AdvancedMarker>
+              </Map>
+            </div>
+            
+            <motion.a
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
               href="https://www.google.com/maps/dir//PLAN+Street+Food/@51.1706905,22.5972437,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x4722f90ad30c5d95:0x157ac9009370d571!2m2!1d22.5972437!2d51.1706905!3e0"
               target="_blank"
               rel="noopener noreferrer"
-              className="cartoon-border bg-plan-orange text-plan-dark font-display text-xl px-6 py-3 hover:bg-plan-light hover:text-plan-orange transition-colors shadow-[4px_4px_0_#2d1642] text-center"
+              className="w-full flex items-center justify-center gap-3 cartoon-border bg-plan-orange text-plan-dark font-display text-2xl md:text-3xl px-6 py-4 hover:bg-plan-light hover:text-plan-orange transition-colors shadow-[6px_6px_0_#fef8f5] text-center"
             >
-              Zobacz na mapie
-            </a>
-            <a
-              href="https://www.google.com/maps/place/PLAN+Street+Food/@51.1706938,22.5946688,17z/data=!4m14!1m7!3m6!1s0x4722f90ad30c5d95:0x157ac9009370d571!2sPLAN+Street+Food!8m2!3d51.1706905!4d22.5972437!16s%2Fg%2F11yvcwp5jn!3m5!1s0x4722f90ad30c5d95:0x157ac9009370d571!8m2!3d51.1706905!4d22.5972437!16s%2Fg%2F11yvcwp5jn?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cartoon-border bg-plan-purple text-plan-light font-display text-xl px-6 py-3 hover:bg-plan-light hover:text-plan-purple transition-colors shadow-[4px_4px_0_#2d1642] text-center mt-4"
-            >
-              Zobacz pinezkę
-            </a>
+              <MapPin size={32} className="hidden md:block" />
+              <span className="text-center">KLIKNIJ ABY WYZNACZYĆ TRASĘ</span>
+            </motion.a>
           </div>
         </div>
 
