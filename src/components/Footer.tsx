@@ -1,6 +1,5 @@
 import { MapPin, Phone, Clock, Facebook, Instagram } from 'lucide-react';
 import { motion } from 'motion/react';
-import { Map, AdvancedMarker, Pin } from '@vis.gl/react-google-maps';
 
 export default function Footer() {
   return (
@@ -69,17 +68,15 @@ export default function Footer() {
           {/* Map */}
           <div className="flex flex-col">
             <div className="cartoon-border overflow-hidden bg-plan-light p-2 transform rotate-1 mb-6 h-[400px]">
-              <Map
-                defaultCenter={{ lat: 51.1706938, lng: 22.5946687 }}
-                defaultZoom={15}
-                mapId="DEMO_MAP_ID"
-                internalUsageAttributionIds={['gmp_mcp_codeassist_v1_aistudio']}
-                style={{ width: '100%', height: '100%' }}
-              >
-                <AdvancedMarker position={{ lat: 51.1706938, lng: 22.5946687 }}>
-                  <Pin background="#4285F4" glyphColor="#fff" />
-                </AdvancedMarker>
-              </Map>
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2498.056075486955!2d22.59466881576734!3d51.17069377958153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4722f90ad30c5d95%3A0x157ac9009370d571!2sPLAN%20Street%20Food!5e0!3m2!1spl!2spl!4v1710866321234!5m2!1spl!2spl" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade" 
+              ></iframe>
             </div>
             
             <motion.a
