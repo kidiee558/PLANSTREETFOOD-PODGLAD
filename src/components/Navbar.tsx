@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import menuData from '../menu.json';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [navLinks, setNavLinks] = useState(menuData.links);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,12 +16,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Menu', href: '#menu' },
-    { name: 'O nas', href: '#o-nas' },
-    { name: 'Opinie', href: '#opinie' },
-    { name: 'Kontakt', href: '#kontakt' },
-  ];
+  // Opcjonalnie: Jeśli chcesz użyć fetch (np. gdy plik jest w public/):
+  /*
+  useEffect(() => {
+    fetch('/menu.json')
+      .then(res => res.json())
+      .then(data => setNavLinks(data.links));
+  }, []);
+  */
 
   return (
     <nav
@@ -42,11 +46,11 @@ export default function Navbar() {
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <a
-                key={link.name}
-                href={link.href}
+                key={link.napis}
+                href={link.link}
                 className="font-display text-xl tracking-wide transition-colors text-plan-light hover:text-plan-orange"
               >
-                {link.name}
+                {link.napis}
               </a>
             ))}
           </div>
@@ -75,12 +79,12 @@ export default function Navbar() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
               {navLinks.map((link) => (
                 <a
-                  key={link.name}
-                  href={link.href}
+                  key={link.napis}
+                  href={link.link}
                   onClick={() => setIsOpen(false)}
                   className="block px-3 py-2 text-2xl font-display text-plan-light hover:text-plan-orange"
                 >
-                  {link.name}
+                  {link.napis}
                 </a>
               ))}
             </div>
