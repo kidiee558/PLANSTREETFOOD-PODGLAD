@@ -1,18 +1,42 @@
 import { motion } from 'motion/react';
+import { useEffect, useState } from 'react';
 
 export default function Gallery() {
-  const images = [
-    { src: "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/jedzenie1.webp", alt: "Nasze jedzenie 1", rotate: "-rotate-2" },
-    { src: "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/jedzenie2.webp", alt: "Nasze jedzenie 2", rotate: "rotate-3" },
-    { src: "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/jedzenie3.webp", alt: "Nasze jedzenie 3", rotate: "-rotate-1" },
-    { src: "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/jedzenie4.jpg", alt: "Nasze jedzenie 4", rotate: "rotate-2" },
+  const productPool = [
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-1.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-2.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-4.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-5.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-6.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-9.jpg",
   ];
 
-  const teamImages = [
-    { src: "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/dziewczyny1.jpg", alt: "Nasza ekipa 1", rotate: "rotate-2" },
-    { src: "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/napoje1.jpg", alt: "Pyszne napoje", rotate: "-rotate-3" },
-    { src: "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/dziewczyny2.jpg", alt: "Nasza ekipa 2", rotate: "rotate-1" },
+  const teamPool = [
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/Wiadomo-sm-5.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/Wiadomo-sm-6.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-40.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/dziewczyny1.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/dziewczyny2.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-58.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-59.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-27.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-35.jpg",
   ];
+
+  const [displayProducts, setDisplayProducts] = useState<string[]>([]);
+  const [displayTeam, setDisplayTeam] = useState<string[]>([]);
+
+  useEffect(() => {
+    // Shuffle and pick 4
+    const shuffle = (array: string[]) => [...array].sort(() => Math.random() - 0.5);
+    
+    setDisplayProducts(shuffle(productPool).slice(0, 4));
+    setDisplayTeam(shuffle(teamPool).slice(0, 4));
+  }, []);
+
+  const rotations = ["-rotate-2", "rotate-3", "-rotate-1", "rotate-2"];
+  const bgColors = ["bg-plan-orange", "bg-plan-purple", "bg-plan-orange", "bg-plan-purple"];
+
 
   return (
     <section id="o-nas" className="py-20 bg-plan-light overflow-hidden">
@@ -99,39 +123,22 @@ export default function Gallery() {
 
         {/* Images Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-center mb-16">
-          {images.map((img, idx) => (
+          {displayProducts.map((src, idx) => (
             <motion.div
-              key={idx}
+              key={`prod-${idx}`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.2 }}
               whileHover={{ scale: 1.05, zIndex: 10 }}
-              className={`cartoon-border bg-white p-2 transform ${img.rotate} ${idx % 2 === 1 ? 'sm:-mt-8 lg:-mt-12' : ''}`}
+              className={`cartoon-border ${bgColors[idx]} p-2 transform ${rotations[idx]} ${idx % 2 === 1 ? 'sm:-mt-8 lg:-mt-12' : ''}`}
             >
-              {idx === 1 ? (
-                <>
-                  <img 
-                    src="https://github.com/kidiee558/PLAN-street-food/blob/main/jedzenie5.jpg?raw=true" 
-                    alt={img.alt} 
-                    className="md:hidden w-full h-64 md:h-72 object-cover rounded-lg border-2 border-plan-dark"
-                    referrerPolicy="no-referrer"
-                  />
-                  <img 
-                    src={img.src} 
-                    alt={img.alt} 
-                    className="hidden md:block w-full h-64 md:h-72 object-cover rounded-lg border-2 border-plan-dark"
-                    referrerPolicy="no-referrer"
-                  />
-                </>
-              ) : (
-                <img 
-                  src={img.src} 
-                  alt={img.alt} 
-                  className="w-full h-64 md:h-72 object-cover rounded-lg border-2 border-plan-dark"
-                  referrerPolicy="no-referrer"
-                />
-              )}
+              <img 
+                src={src} 
+                alt={`Produkt ${idx + 1}`} 
+                className="w-full h-64 md:h-72 object-cover rounded-lg border-2 border-plan-dark"
+                referrerPolicy="no-referrer"
+              />
             </motion.div>
           ))}
         </div>
@@ -148,8 +155,8 @@ export default function Gallery() {
           </motion.h3>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-          {teamImages.map((img, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-center">
+          {displayTeam.map((src, idx) => (
             <motion.div
               key={`team-${idx}`}
               initial={{ opacity: 0, y: 50 }}
@@ -157,12 +164,12 @@ export default function Gallery() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.2 }}
               whileHover={{ scale: 1.05, zIndex: 10 }}
-              className={`cartoon-border bg-plan-orange p-2 transform ${img.rotate} ${idx === 1 ? 'md:-mt-8' : ''}`}
+              className={`cartoon-border ${bgColors[(idx + 1) % 4]} p-2 transform ${rotations[(idx + 2) % 4]} ${idx % 2 === 1 ? 'sm:-mt-8 lg:-mt-12' : ''}`}
             >
               <img 
-                src={img.src} 
-                alt={img.alt} 
-                className="w-full h-72 md:h-96 object-cover rounded-lg border-2 border-plan-dark"
+                src={src} 
+                alt={`Ekipa ${idx + 1}`} 
+                className="w-full h-72 md:h-80 object-cover rounded-lg border-2 border-plan-dark"
                 referrerPolicy="no-referrer"
               />
             </motion.div>
@@ -174,7 +181,7 @@ export default function Gallery() {
           <motion.a
             whileHover={{ scale: 1.05, rotate: -2 }}
             whileTap={{ scale: 0.95 }}
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/plan.streetfood/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block cartoon-border bg-plan-purple text-plan-light font-display text-xl md:text-3xl px-6 py-4 shadow-[6px_6px_0_#f48120]"
