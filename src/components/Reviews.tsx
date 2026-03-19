@@ -85,7 +85,7 @@ export default function Reviews() {
             rel="noopener noreferrer"
             className="inline-block cartoon-border bg-plan-purple text-plan-light font-display text-xl sm:text-2xl md:text-4xl px-8 py-4 md:px-12 md:py-6 shadow-[6px_6px_0_#2d1642] hover:bg-plan-dark transition-colors"
           >
-            ZOBACZ WIĘCEJ OPINII ⭐
+            ZOBACZ WIĘCEJ OPINII ⭐⭐⭐⭐⭐
           </motion.a>
         </div>
       </div>
