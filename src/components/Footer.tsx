@@ -36,7 +36,7 @@ export default function Hero() {
               <span className="text-[11vw] sm:text-[10vw] md:text-6xl lg:text-7xl xl:text-8xl whitespace-nowrap">STREET FOOD</span>
             </h1>
             <a 
-              href="https://www.google.com/maps/place/PLAN+Street+Food/@51.1706938,22.5946688,17z/data=!3m1!4b1!4m14!1m7!3m6!1s0x4722f90ad30c5d95:0x157ac9009370d571!2sPLAN+Street+Food!8m2!3d51.1706905!4d22.5972437!16s%2Fg%2F11yvcwp5jn!3m5!1s0x4722f90ad30c5d95:0x157ac9009370d571!8m2!3d51.1706905!4d22.5972437!16s%2Fg%2F11yvcwp5jn?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D" 
+              href="https://www.google.com/maps/dir/?api=1&destination=Plac+handlowy,+Dominów,+Rynek+4" 
               target="_blank" 
               rel="noopener noreferrer"
               className="group text-sm sm:text-xl md:text-2xl font-bold text-plan-dark mb-8 bg-white/90 inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-xl transform rotate-2 cartoon-border hover:-translate-y-1 hover:shadow-[8px_8px_0_#2d1642] transition-all mx-auto md:mx-0"
