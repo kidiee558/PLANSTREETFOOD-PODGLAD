@@ -34,7 +34,7 @@ export default function Navbar() {
             className="flex-shrink-0"
           >
             <a href="#" className="flex items-center gap-3">
-              <img src="https://github.com/kidiee558/PLAN-street-food/blob/main/PLANLOGO.png?raw=true" alt="PLAN Logo" className="h-10 md:h-16 w-auto" />
+              <img src="https://github.com/kidiee558/PLAN-street-food/blob/main/LOGOOOO.png?raw=true" alt="PLAN Logo" className="h-10 md:h-16 w-auto" />
             </a>
           </motion.div>
           
