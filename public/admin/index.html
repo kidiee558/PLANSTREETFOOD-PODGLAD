@@ -9,9 +9,11 @@
 </head>
 <body>
   <script>
-    // TA LINIA JEST KLUCZOWA:
-    // Podmień poniższy adres na Twój rzeczywisty adres strony z Netlify!
+    // Ten skrypt łączy Twój panel na Vercelu z bazą użytkowników na Netlify
     if (window.netlifyIdentity) {
+      // Wymuszamy połączenie z Twoim adresem Netlify
+      window.localStorage.setItem('netlifySiteURL', 'https://bright-brigadeiros-6a1fe4.netlify.app');
+
       window.netlifyIdentity.on("init", user => {
         if (!user) {
           window.netlifyIdentity.on("login", () => {
