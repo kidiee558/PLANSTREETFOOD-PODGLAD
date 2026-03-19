@@ -1,7 +1,9 @@
 backend:
-  name: git-gateway
-  site_domain: bright-brigadeiros-6a1fe4.netlify.app
+  name: github
+  repo: kidiee558/PLANSTREETFOOD-PODGLAD
   branch: main
+  base_url: https://api.netlify.com 
+  auth_endpoint: auth
 publish_mode: editorial_workflow
 media_folder: "public/images"
 public_folder: "/images"
