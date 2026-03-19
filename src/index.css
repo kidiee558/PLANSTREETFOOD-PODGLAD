@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 @theme {
-  --color-plan-purple: #5c2c84;
-  --color-plan-orange: #f48120;
+  --color-plan-purple: #652581;
+  --color-plan-orange: #ec8e39;
   --color-plan-light: #fef8f5;
   --color-plan-dark: #2d1642;
   
-  --font-display: 'Sigmar', sans-serif;
-  --font-body: 'Nunito', sans-serif;
+  --font-display: 'Paytone One', sans-serif;
+  --font-body: 'Quicksand', sans-serif;
 }
 
 @layer base {
