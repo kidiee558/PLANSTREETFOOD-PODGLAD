@@ -1,7 +1,24 @@
 import { motion } from 'motion/react';
 import { ArrowDown, Facebook, Instagram } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export default function Hero() {
+  const productPool = [
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-1.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-2.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-4.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-5.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-6.jpg",
+    "https://raw.githubusercontent.com/kidiee558/PLAN-street-food/main/PLAN-sm-produkt-9.jpg",
+  ];
+
+  const [heroImage, setHeroImage] = useState(productPool[2]); // Default to produkt-4
+
+  useEffect(() => {
+    const randomIdx = Math.floor(Math.random() * productPool.length);
+    setHeroImage(productPool[randomIdx]);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-plan-orange pt-32 pb-20">
       {/* Animated Background Pattern */}
@@ -22,21 +39,13 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ type: "spring", bounce: 0.6, duration: 1 }}
           >
-            <motion.img 
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              src="/logo.jpg" 
-              alt="PLAN Logo" 
-              className="w-48 md:w-64 mx-auto md:mx-0 mb-6 rounded-3xl cartoon-border transform -rotate-3 transition-transform bg-white" 
-              onError={(e) => e.currentTarget.style.display = 'none'} 
-            />
-            
             <h1 className="font-display text-plan-light mb-4 leading-none flex flex-col items-center md:items-start w-full" style={{ textShadow: '4px 4px 0 #2d1642' }}>
               <span className="text-[11vw] sm:text-[10vw] md:text-6xl lg:text-7xl xl:text-8xl whitespace-nowrap">TWÓJ NOWY</span>
               <span className="text-[11vw] sm:text-[10vw] md:text-6xl lg:text-7xl xl:text-8xl whitespace-nowrap text-plan-purple" style={{ textShadow: '4px 4px 0 #fef8f5' }}>ULUBIONY</span>
               <span className="text-[11vw] sm:text-[10vw] md:text-6xl lg:text-7xl xl:text-8xl whitespace-nowrap">STREET FOOD</span>
             </h1>
             <a 
-              href="https://www.google.com/maps/dir/?api=1&destination=Plac+handlowy,+Dominów,+Rynek+4" 
+              href="https://www.google.com/maps/place/PLAN+Street+Food/@51.1706938,22.5946688,17z/data=!3m1!4b1!4m14!1m7!3m6!1s0x4722f90ad30c5d95:0x157ac9009370d571!2sPLAN+Street+Food!8m2!3d51.1706905!4d22.5972437!16s%2Fg%2F11yvcwp5jn!3m5!1s0x4722f90ad30c5d95:0x157ac9009370d571!8m2!3d51.1706905!4d22.5972437!16s%2Fg%2F11yvcwp5jn?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D" 
               target="_blank" 
               rel="noopener noreferrer"
               className="group text-sm sm:text-xl md:text-2xl font-bold text-plan-dark mb-8 bg-white/90 inline-flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-xl transform rotate-2 cartoon-border hover:-translate-y-1 hover:shadow-[8px_8px_0_#2d1642] transition-all mx-auto md:mx-0"
@@ -56,10 +65,10 @@ export default function Hero() {
               </motion.a>
               
               <div className="flex gap-3">
-                <motion.a whileHover={{ scale: 1.1, rotate: 5 }} whileTap={{ scale: 0.9 }} href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="bg-plan-light text-plan-purple p-3 sm:p-4 rounded-full cartoon-border hover:bg-plan-dark hover:text-plan-light transition-colors">
+                <motion.a whileHover={{ scale: 1.1, rotate: 5 }} whileTap={{ scale: 0.9 }} href="https://www.facebook.com/plan.streetfood" target="_blank" rel="noopener noreferrer" className="bg-plan-light text-plan-purple p-3 sm:p-4 rounded-full cartoon-border hover:bg-plan-dark hover:text-plan-light transition-colors">
                   <Facebook size={28} />
                 </motion.a>
-                <motion.a whileHover={{ scale: 1.1, rotate: -5 }} whileTap={{ scale: 0.9 }} href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="bg-plan-light text-plan-purple p-3 sm:p-4 rounded-full cartoon-border hover:bg-plan-dark hover:text-plan-light transition-colors">
+                <motion.a whileHover={{ scale: 1.1, rotate: -5 }} whileTap={{ scale: 0.9 }} href="https://www.instagram.com/plan.streetfood/" target="_blank" rel="noopener noreferrer" className="bg-plan-light text-plan-purple p-3 sm:p-4 rounded-full cartoon-border hover:bg-plan-dark hover:text-plan-light transition-colors">
                   <Instagram size={28} />
                 </motion.a>
               </div>
@@ -76,7 +85,7 @@ export default function Hero() {
             className="relative"
           >
             <img 
-              src="https://github.com/kidiee558/PLAN-street-food/blob/main/kebabhomepage.png?raw=true" 
+              src={heroImage} 
               alt="Pyszne Jedzenie" 
               className="w-80 h-80 sm:w-96 sm:h-96 md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px] object-cover object-center rounded-full border-[8px] md:border-[12px] border-plan-light shadow-2xl z-10 relative"
               referrerPolicy="no-referrer"
