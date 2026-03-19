@@ -76,66 +76,17 @@ export default function Reviews() {
         </div>
 
         {/* Promo Banner */}
-        <div className="mt-8 max-w-4xl mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="cartoon-border bg-plan-purple p-6 sm:p-8 md:p-12 relative overflow-hidden shadow-[8px_8px_0_#2d1642]"
+        <div className="mt-12 max-w-4xl mx-auto px-4 text-center relative z-10">
+          <motion.a
+            whileHover={{ scale: 1.05, rotate: -2 }}
+            whileTap={{ scale: 0.95 }}
+            href="https://www.google.com/maps/place/PLAN+Street+Food/@51.1706938,22.5946688,17z/data=!3m1!4b1!4m14!1m7!3m6!1s0x4722f90ad30c5d95:0x157ac9009370d571!2sPLAN+Street+Food!8m2!3d51.1706905!4d22.5972437!16s%2Fg%2F11yvcwp5jn!3m5!1s0x4722f90ad30c5d95:0x157ac9009370d571!8m2!3d51.1706905!4d22.5972437!16s%2Fg%2F11yvcwp5jn?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block cartoon-border bg-plan-purple text-plan-light font-display text-xl sm:text-2xl md:text-4xl px-8 py-4 md:px-12 md:py-6 shadow-[6px_6px_0_#2d1642] hover:bg-plan-dark transition-colors"
           >
-            {/* Orange shape decoration */}
-            <div className="absolute top-0 left-0 w-48 h-48 sm:w-64 sm:h-64 bg-plan-orange rounded-br-full opacity-90 -translate-x-10 -translate-y-10"></div>
-            
-            <div className="relative z-10 text-center mb-10 mt-4 sm:mt-8">
-              <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display text-plan-light leading-tight" style={{ textShadow: '3px 3px 0 #2d1642' }}>
-                Wystaw nam opinię<br/>w Google i odbierz<br/>małego kebsa<br/>w prezencie!
-              </h3>
-            </div>
-            
-            <div className="relative z-10 bg-plan-dark/20 p-5 sm:p-8 rounded-2xl mb-8 text-plan-light border-2 border-plan-light/10">
-              <h4 className="text-2xl sm:text-3xl md:text-4xl font-display text-plan-orange mb-6 text-center" style={{ textShadow: '2px 2px 0 #2d1642' }}>
-                Regulamin akcji<br className="sm:hidden"/> "darmowy kebab<br className="sm:hidden"/> za opinię w Google"
-              </h4>
-              
-              <p className="font-bold text-base sm:text-lg mb-8 leading-relaxed">
-                Aby otrzymać darmowego kebsa należy:<br/>
-                <span className="text-plan-orange">a)</span> wystawić opinię o Bistro PLAN w Google,<br/>
-                <span className="text-plan-orange">b)</span> przesłać screen opublikowanej opinii w wiadomości prywatnej @plan.streetfood (Instagram / Facebook) lub pokazać wystawioną opinię przy odbiorze.
-              </p>
-              
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex gap-3 sm:gap-4 items-center bg-plan-dark/40 p-3 sm:p-4 rounded-xl border border-plan-light/20">
-                  <div className="bg-plan-orange text-plan-dark font-display w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center shrink-0 text-xl sm:text-2xl cartoon-border border-2">1</div>
-                  <p className="text-xs sm:text-sm md:text-base font-bold">Organizatorem akcji jest PLAN. Akcja nie jest sponsorowana ani powiązana z Google ani Meta.</p>
-                </div>
-                <div className="flex gap-3 sm:gap-4 items-center bg-plan-dark/40 p-3 sm:p-4 rounded-xl border border-plan-light/20">
-                  <div className="bg-plan-orange text-plan-dark font-display w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center shrink-0 text-xl sm:text-2xl cartoon-border border-2">2</div>
-                  <p className="text-xs sm:text-sm md:text-base font-bold">Udział w akcji jest dobrowolny i bezpłatny.</p>
-                </div>
-                <div className="flex gap-3 sm:gap-4 items-center bg-plan-dark/40 p-3 sm:p-4 rounded-xl border border-plan-light/20">
-                  <div className="bg-plan-orange text-plan-dark font-display w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center shrink-0 text-xl sm:text-2xl cartoon-border border-2">3</div>
-                  <p className="text-xs sm:text-sm md:text-base font-bold">Jedna osoba może wystawić tylko jedną opinię i odebrać tylko jednego kebaba.</p>
-                </div>
-                <div className="flex gap-3 sm:gap-4 items-center bg-plan-dark/40 p-3 sm:p-4 rounded-xl border border-plan-light/20">
-                  <div className="bg-plan-orange text-plan-dark font-display w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center shrink-0 text-xl sm:text-2xl cartoon-border border-2">4</div>
-                  <p className="text-xs sm:text-sm md:text-base font-bold">Nagroda nie podlega wymianie na gotówkę.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center relative z-10">
-              <motion.a
-                whileHover={{ scale: 1.05, rotate: -2 }}
-                whileTap={{ scale: 0.95 }}
-                href="https://www.google.com/maps/place/PLAN+Street+Food/@51.1706905,22.5972437,17z/data=!3m1!4b1!4m6!3m5!1s0x4722f90ad30c5d95:0x157ac9009370d571!8m2!3d51.1706905!4d22.5972437!16s%2Fg%2F11yvcwp5jn?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block cartoon-border bg-plan-orange text-plan-dark font-display text-base sm:text-xl md:text-3xl px-4 py-3 md:px-8 md:py-5 shadow-[4px_4px_0_#2d1642] hover:bg-white transition-colors"
-              >
-                WYSTAW OPINIĘ I ODBIERZ KEBSA 🌯
-              </motion.a>
-            </div>
-          </motion.div>
+            ZOBACZ WIĘCEJ OPINII ⭐
+          </motion.a>
         </div>
       </div>
     </section>
