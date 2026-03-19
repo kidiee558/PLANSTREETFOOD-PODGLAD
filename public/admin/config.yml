@@ -1,24 +1,18 @@
 backend:
   name: git-gateway
+  site_domain: bright-brigadeiros-6a1fe4.netlify.app
   branch: main
-
+publish_mode: editorial_workflow
 media_folder: "public/images"
 public_folder: "/images"
 
 collections:
   - name: "menu"
-    label: "Nawigacja"
-    folder: "src"
-    extension: "json"
-    format: "json"
-    create: false
-    slug: "menu"
+    label: "Menu"
     files:
-      - label: "Lista Menu"
-        name: "menu_list"
-        file: "src/menu.json"
+      - file: "src/data/menu.json"
+        label: "Lista dań"
+        name: "items"
         fields:
-          - {label: "Linki", name: "links", widget: "list", fields: [
-              {label: "Napis", name: "napis", widget: "string"},
-              {label: "Link", name: "link", widget: "string"}
-            ]}
+          - { label: "Nazwa", name: "name", widget: "string" }
+          - { label: "Cena", name: "price", widget: "string" }
